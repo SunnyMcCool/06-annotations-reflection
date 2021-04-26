@@ -1,5 +1,6 @@
 package ohm.softa.a06.tests;
 
+import com.google.gson.Gson;
 import ohm.softa.a06.model.Joke;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -47,4 +48,15 @@ class ICNDBTests {
 
 		assertTrue(collision, String.format("Completed %d requests without collision; consider increasing REQUEST_COUNT", requests));
 	}
+
+	@Test
+	void Gson()  {
+		Gson gson = new Gson();
+		// JSON String --> Object
+		Joke j = gson.fromJson("{\"id\": 0, \"joke\": \"Haha.\"}", Joke.class);
+		// categories remains `null`
+		// Objec --> JSON String
+		String json = gson.toJson(j);
+	}
+
 }

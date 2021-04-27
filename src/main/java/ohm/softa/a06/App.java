@@ -1,14 +1,8 @@
 package ohm.softa.a06;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.SerializedName;
 import ohm.softa.a06.model.Joke;
 
-/**
- * @author Peter Kurfer
- * Created on 11/10/17.
- */
 
 //class Employee {
 //	private Integer id;
@@ -37,12 +31,12 @@ public class App {
 //
 //		System.out.println(gson1.toJson(emp));
 //
-//		Gson gson = new Gson();
-//		// JSON String --> Object
-//		Joke j = gson.fromJson("{\"id\": 0, \"joke\": \"Haha.\"}", Joke.class);
-//		// categories remains `null`
-//		// Objec --> JSON String
-//		String json = gson.toJson(j);
+		Gson gson = new Gson();
+		// JSON String --> Object
+		Joke j = gson.fromJson("{\"id\": 0, \"joke\": \"Haha.\"}", Joke.class);
+		// categories remains `null`
+		// Objec --> JSON String
+		String json = gson.toJson(j);
 
 
 	}

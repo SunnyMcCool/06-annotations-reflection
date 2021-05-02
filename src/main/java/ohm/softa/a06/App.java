@@ -2,7 +2,11 @@ package ohm.softa.a06;
 
 import com.google.gson.Gson;
 import ohm.softa.a06.model.Joke;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.io.IOException;
 
 //class Employee {
 //	private Integer id;
@@ -23,7 +27,7 @@ import ohm.softa.a06.model.Joke;
 
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO fetch a random joke and print it to STDOUT
 //		Employee emp = new Employee(1001, "Lokesh", "Gupta", "howtodoinjava@gmail.com");
 //
@@ -37,6 +41,17 @@ public class App {
 		// categories remains `null`
 		// Objec --> JSON String
 		String json = gson.toJson(j);
+
+		Retrofit retrofit = new Retrofit.Builder()
+			.baseUrl("https://api.icndb.com/")
+			.addConverterFactory(GsonConverterFactory.create())
+			.build();
+
+		ICNDBApi service = retrofit.create(ICNDBApi.class);
+		Call<Joke> call = service.getRandomJoke();
+		Joke joke = call.execute().body();
+		System.out.println(joke);
+
 
 
 	}
